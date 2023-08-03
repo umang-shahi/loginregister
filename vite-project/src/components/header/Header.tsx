@@ -36,7 +36,7 @@ export default () => {
    
     <EuiHeaderSectionItem border="left">
      <h2>Welcome
-     <EuiAvatar size="s" name="home" imageUrl="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" /> 
+     <EuiAvatar size="s" name="home" imageUrl="https://w0.peakpx.com/wallpaper/45/583/HD-wallpaper-nature-landscape-landscape-nature.jpg" /> 
 
      </h2>
     </EuiHeaderSectionItem>

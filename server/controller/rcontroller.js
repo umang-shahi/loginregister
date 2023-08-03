@@ -1,14 +1,17 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const jwt = require('jsonwebtoken');
+
+const bcrypt = require("bcryptjs");
 
 
 //register
 const register = async (req, res) => {
-    const { firstName, lastName, email, password, confirmPassword } = req.body;
-  console.log(req.body)
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    const { firstName, lastName, email, password, confirmPassword, role } = req.body;
+
+   
+ 
+    if (!firstName || !lastName || !email || !password || !confirmPassword || !role  ) {
       return res.status(400).json({
         success: false,
         message: "Fields can't be empty!",
@@ -37,14 +40,24 @@ const register = async (req, res) => {
           message: "email already exists!",
         });
       }
+
+      //salt generation and hash password
+      const salt =  await bcrypt.genSalt(10);
+      const secPassword = await bcrypt.hash(password, salt)
+
+      //for confirmPassword
+      const seccPassword = await bcrypt.hash(confirmPassword,salt)
   
+
+      //create user
       const user = await prisma.users.create({
         data: {
-          firstName,
-          lastName,
-          email,
-          password,
-          confirmPassword,
+          firstName: firstName,
+          lastName:lastName,
+          email: email,
+          password: secPassword,
+          confirmPassword: seccPassword,
+          role: role,
         },
       });
   
@@ -52,6 +65,7 @@ const register = async (req, res) => {
         success: true,
         message: "User registered successfully!",
         user,
+      
       });
     } catch (error) {
       console.log(error);

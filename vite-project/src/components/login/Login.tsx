@@ -48,14 +48,16 @@ const Login: React.FC = () => {
           password,
         });
         console.log(res)
-        if (res.data.role === "admin") {
+        if (res.data.user.role === "ADMIN") {
           toast.success(res.data.message);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user", JSON.stringify(res.data));
           navigate("/admin/dashboard");
           
           setIsLoading(false);
-        }else{
+        }
+        if (res.data.user.role === "USER") {
+
           toast.success(res.data.message);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user", JSON.stringify(res.data));
@@ -72,7 +74,7 @@ const Login: React.FC = () => {
         setIsLoading(false);
       }
     } else {
-      return toast.error("Invalid form!");
+      return toast.error("Invalid form");
     }
   };
 

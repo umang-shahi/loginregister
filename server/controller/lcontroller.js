@@ -46,21 +46,26 @@ const login = async(req,res)=>{
         });
       }
        
+
+      //token generate
       const payload = {
         id: user.id, 
         role: user.role
       };
 
-      const secretKey = 'your_secret_key';
+      
 
-      const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
-
+      const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '1h' });
+    
+      // console.log('Generated JWT:', token);
+     
 
         return res.status(200).json({
           success: true,
           message: "login successfull",
           user,
-          token,
+          token
+          
         });
 
 

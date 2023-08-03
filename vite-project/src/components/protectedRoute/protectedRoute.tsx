@@ -1,14 +1,23 @@
-import { Navigate, Outlet } from "react-router-dom";
 import React from "react";
+import { Navigate} from "react-router-dom";
 
-const ProtectedRoute: React.FC = ({ children }:any) => {
+
+const ProtectedRoute:React.FC = ( props:any) => {
   let auth = localStorage.getItem("token");
 
   if (!auth) {
     return <Navigate to="/login" />;
   }
 
-  return children ? children : <Outlet />;
+  return( 
+    <React.Fragment>
+      {
+        props ? props.children : null
+      }
+    </React.Fragment>
+  )
 };
 
 export default ProtectedRoute;
+
+
