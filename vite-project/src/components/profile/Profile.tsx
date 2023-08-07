@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get<User[]>("http://localhost:3000/users");
+        const response = await axios.get<User[]>("http://localhost:8000/users");
         setUsers(response.data); // Update the state with the fetched data
       } catch (error) {
         console.error("Error fetching users:", error);

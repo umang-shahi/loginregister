@@ -43,7 +43,7 @@ const Login: React.FC = () => {
     if (validateForm()) {
       try {
         setIsLoading(true);
-        const res = await axios.post("http://localhost:3000/login", {
+        const res = await axios.post("http://localhost:8000/login", {
           email,
           password,
         });
