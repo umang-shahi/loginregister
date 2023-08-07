@@ -71,7 +71,7 @@ const SignUp: React.FC = () => {
     if (validForm()) {
       try {
         setIsLoading(true);
-        const res = await axios.post("http://localhost:3000/register", body);
+        const res = await axios.post("http://localhost:8000/register", body);
         console.log(res.data);
         if (res.data.success === true) {
           toast.success(res.data.message);
