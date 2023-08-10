@@ -6,7 +6,8 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 
-import { EuiLoadingSpinner } from "@elastic/eui";
+import { EuiForm, EuiFormRow,EuiButton,EuiFieldText, EuiLoadingSpinner} from "@elastic/eui";
+
 
 
 interface FormErrors {
@@ -40,6 +41,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     if (validateForm()) {
       try {
         setIsLoading(true);
@@ -81,44 +83,92 @@ const Login: React.FC = () => {
   return(
     
       
-        <div className="login">
+        // <div className="login">
 
-        <h1>Login</h1>
+        // <h1>Login</h1>
 
-        <form onSubmit={handleSubmit}>
+        // <form onSubmit={handleSubmit}>
 
-            <input type="text" placeholder="Enter your Email" value={email}
+        //     <input type="text" placeholder="Enter your Email" value={email}
             
-              onChange={(e) => setEmail(e.target.value)}/>
+        //       onChange={(e) => setEmail(e.target.value)}/>
 
-               {errors.email && (
-              <span style={{ color: "red" }}>{errors.email}</span>
-            )}
+        //        {errors.email && (
+        //       <span style={{ color: "red" }}>{errors.email}</span>
+        //     )}
             
-            <input type="text" placeholder="Enter your Password" value={password}
+        //     <input type="text" placeholder="Enter your Password" value={password}
              
               
-              onChange={(e) => setPassword(e.target.value)}/>
+        //       onChange={(e) => setPassword(e.target.value)}/>
               
-               {errors.password && (
-                <span style={{ color: "red" }}>{errors.password}</span>
-              )}
+        //        {errors.password && (
+        //         <span style={{ color: "red" }}>{errors.password}</span>
+        //       )}
 
-            <button type='submit'> {""} {isLoading && <EuiLoadingSpinner size="m"/>}Login</button> 
-            
-           <br/>
+        //     <button type='submit'> {""} {isLoading && <EuiLoadingSpinner size="m"/>}Login</button> 
+        
+
+     
+        //    <br/>
+        //     <span>
+        //         Don't have an account?
+        //         <NavLink style={{ textDecoration: "none" }} to="/register">
+        //           Register
+        //         </NavLink>
+        //       </span>
+        //       </form>
+        //     </div>
+
+
+  
+
+
+        <div className="login">
+        
+       
+         
+        <h1>Login</h1>
+        <EuiForm component="form" onSubmit={handleSubmit}>
+          <EuiFormRow label="Email">
+            <EuiFieldText
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </EuiFormRow>
+          {errors.email && (
+            <span style={{ color: 'red' }}>{errors.email}</span>
+          )}
+          <EuiFormRow label="Password">
+            <EuiFieldText
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </EuiFormRow>
+          {errors.password && (
+            <span style={{ color: 'red' }}>{errors.password}</span>
+          )}
+          <EuiFormRow>
+            <EuiButton type="submit" fill>
+              {isLoading && <EuiLoadingSpinner size="m" />} Login
+            </EuiButton>
+          </EuiFormRow>
+          <EuiFormRow>
             <span>
-                Don't have an account?
-                <NavLink style={{ textDecoration: "none" }} to="/register">
-                  Register
-                </NavLink>
-              </span>
-              </form>
-            </div>
-
-
+              Don't have an account?{' '}
+              <NavLink style={{ textDecoration: 'none' }} to="/signup">
+                Register
+              </NavLink>
+             
+            </span>
+          </EuiFormRow>
+        </EuiForm>
+      </div>
+    );
+  };
                
   
-  );
-               };
+  
+               
               export default Login;

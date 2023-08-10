@@ -1,0 +1,32 @@
+.admin-table {
+
+    margin: 10px 71px;
+    -webkit-box-shadow: 0px 1px 5px -1px rgba(75, 61, 61, 0.58);
+    -moz-box-shadow: 0px 1px 5px -1px rgba(88, 76, 76, 0.58);
+    box-shadow: 0px 1px 5px -1px rgba(20, 3, 3, 0.58);
+    .table-header{
+      background: #27d43e;
+  
+    }
+  }
+  .admin-logout {
+    margin: 4px 71px;
+  }
+
+  // ButtonStyles.scss
+.edit-button {
+  background-color: rgb(52, 52, 168);
+  color: #ffffff;
+  border-style:ridge;
+  padding: 5px 10px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: rgb(223, 30, 30);
+  color: white;
+  border-style:ridge;
+  padding: 5px 10px;
+  cursor: pointer;
+}

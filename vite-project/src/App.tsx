@@ -13,6 +13,10 @@ import { Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
+
+
 const App: React.FC<void> = () => {
   return (
     <>
@@ -24,13 +28,18 @@ const App: React.FC<void> = () => {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            
+            
 
             
+            
+
+          
            <Route path= "/profile" element = {<ProtectedRoute>{<Profile/>}</ProtectedRoute>}/>
-           {/* <Route path="/profile" element={<Profile/>}/> */}
+           
 
   
-          {/* <Route path="/admin/dashboard" element={<Admin/>}/> */}
+          
             <Route path="/admin/dashboard" element={<ProtectedRoute>{<Admin/>}</ProtectedRoute>}/>
 
            

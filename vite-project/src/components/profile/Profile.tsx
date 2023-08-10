@@ -39,6 +39,7 @@ const Profile: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    // console.log(localStorage.getItem("token"))
     navigate("/");
   };
 

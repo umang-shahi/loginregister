@@ -1,6 +1,6 @@
 
 import {
-  EuiAvatar,
+  
   EuiHeader,
   EuiHeaderSectionItem,
   EuiHeaderSectionItemButton
@@ -26,17 +26,20 @@ export default () => {
 
 
   return (
+
+  
     <EuiHeader>
       
     <EuiHeaderSectionItem border="right">
+
+   
     
      <h2>Home</h2>
     </EuiHeaderSectionItem>
 
-   
     <EuiHeaderSectionItem border="left">
      <h2>Welcome
-     <EuiAvatar size="s" name="home" imageUrl="https://w0.peakpx.com/wallpaper/45/583/HD-wallpaper-nature-landscape-landscape-nature.jpg" /> 
+     
 
      </h2>
     </EuiHeaderSectionItem>

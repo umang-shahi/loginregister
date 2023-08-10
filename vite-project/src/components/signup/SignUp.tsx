@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-import { EuiLoadingSpinner } from "@elastic/eui";
+import { EuiLoadingSpinner,EuiForm,EuiFormRow,EuiButton,EuiFieldText, EuiFlexItem, EuiFlexGrid } from "@elastic/eui";
 
 interface FormErrors {
   [key: string]: string;
@@ -73,6 +73,7 @@ const SignUp: React.FC = () => {
         setIsLoading(true);
         const res = await axios.post("http://localhost:8000/register", body);
         console.log(res.data);
+        
         if (res.data.success === true) {
           toast.success(res.data.message);
 
@@ -99,76 +100,111 @@ const SignUp: React.FC = () => {
   };
 
   return (
+    
+     
     <div className="container">
-      <h1>SignUp</h1>
+    <h1 >SignUp</h1>
+  
+    
+    <EuiForm component="form"  onSubmit={handleSubmit}>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your first Name "
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          autoComplete="on"
-          autoCorrect="on"
-        />
-        {errors.firstName && (
-          <span style={{ color: "red" }}>{errors.firstName}</span>
-        )}
-        <input
-          type="text"
-          placeholder="Enter your last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          autoComplete="on"
-          autoCorrect="on"
-        />
-        {errors.lastName && (
-          <span style={{ color: "red" }}>{errors.lastName}</span>
-        )}
-        <input
-          type="text"
-          placeholder="Enter your Email"
+      <EuiFlexGrid columns={2} direction="column" >
+
+
+        <EuiFlexItem >
+          <EuiFormRow label="First Name">
+            <EuiFieldText
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              autoComplete="on"
+              autoCorrect="on"
+            />
+          </EuiFormRow>
+          {errors.firstName && (
+            <span style={{ color: 'red' }}>{errors.firstName}</span>
+          )}
+          </EuiFlexItem>
+          
+       <EuiFlexItem>
+          <EuiFormRow label="Last Name">
+            <EuiFieldText
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              autoComplete="on"
+              autoCorrect="on"
+            />
+          </EuiFormRow>
+          {errors.lastName && (
+            <span style={{ color: 'red' }}>{errors.lastName}</span>
+          )}
+        </EuiFlexItem>
+      
+      <EuiFlexItem>
+      <EuiFormRow label="Email">
+        <EuiFieldText
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="on"
           autoCorrect="on"
         />
-        {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
-        <input
-          type="text"
-          placeholder="Enter your Password"
+      </EuiFormRow>
+      {errors.email && (
+        <span style={{ color: 'red' }}>{errors.email}</span>
+      )}
+      </EuiFlexItem>
+      <EuiFlexItem>
+   
+      <EuiFormRow label="Password">
+        <EuiFieldText
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="on"
           autoCorrect="on"
         />
-        {errors.password && (
-          <span style={{ color: "red" }}>{errors.password}</span>
-        )}
-        <input
-          type="text"
-          placeholder="Confirm your Password"
+      </EuiFormRow>
+      {errors.password && (
+        <span style={{ color: 'red' }}>{errors.password}</span>
+      )}
+    </EuiFlexItem>
+    <EuiFlexItem>
+      <EuiFormRow label="Confirm Password">
+        <EuiFieldText
+          type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           autoComplete="on"
           autoCorrect="on"
         />
-        {errors.confirmPassword && (
-          <span style={{ color: "red" }}>{errors.confirmPassword}</span>
-        )}
-
-        <button type="submit">
-          {" "}
-          {isLoading && <EuiLoadingSpinner size="m" />}SignUp
-        </button>
+      </EuiFormRow>
+      {errors.confirmPassword && (
+        <span style={{ color: 'red' }}>{errors.confirmPassword}</span>
+      )}
+      </EuiFlexItem>
+      <EuiFlexItem>
+      
+      <EuiFormRow>
+        <EuiButton type="submit" fill>
+          {isLoading && <EuiLoadingSpinner size="m" />} SignUp
+        </EuiButton>
+      </EuiFormRow>
+      <EuiFormRow>
         <span>
-          Already have an account?
-          <NavLink style={{ textDecoration: "none" }} to="/login">
+          Already have an account?{' '}
+          <NavLink style={{ textDecoration: 'none' }} to="/login">
             Login
           </NavLink>
         </span>
-      </form>
-    </div>
+      </EuiFormRow>
+      </EuiFlexItem>
+
+      </EuiFlexGrid>
+
+    </EuiForm>
+   
+
+  </div>
+   
   );
 };
 export default SignUp;
